@@ -28,6 +28,8 @@ largest stored block index plus one. Sparse LoRAs can therefore be misidentified
 including a known but incorrect generation; v1 has no manual override. Duplicate
 basenames require folder-qualified names.
 
+<img width="957" height="779" alt="image" src="https://github.com/user-attachments/assets/c199ed82-ba87-4600-93f0-4258e64cbea3" />
+
 ## Compatibility and mapping provenance
 
 The UI reuses Manager's autocomplete and exported list widget without copying its
