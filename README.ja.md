@@ -31,8 +31,6 @@ BlendはLoRA因子の平均であり、合成された差分の平均ではあ�
 52ブロック用マッピングは[参照元](https://github.com/shin131002/ComfyUI-Anima-Remap)の
 推定復元版です。出典情報を同梱しています。LoRA Managerの一覧・検索Widgetを再利用していますが、
 ライブラリ側の「loaderへ送信」は対象ノードが固定されているため、このノードでは検索欄を使います。
-検証内容と制限は `VERIFICATION.md`、実装・出典の詳細は `README.md` を参照してください。
-
 
 ## install
 
@@ -40,3 +38,10 @@ BlendはLoRA因子の平均であり、合成された差分の平均ではあ�
 cd custum_nodes
 git clone https://github.com/palealloy2999-prog/ComfyUI-Anima-Lora-Loader
 ```
+
+## 出典・参考元
+
+- [ComfyUI-Lora-Manager](https://github.com/willmiao/ComfyUI-Lora-Manager): LoRA一覧、検索Widget、メタデータ取得の参考元
+- [ComfyUI-Anima-Remap](https://github.com/shin131002/ComfyUI-Anima-Remap): ブロック変換マッピングの参考元
+- マッピングの詳細とライセンス情報は `mapping/UPSTREAM-LICENSE.txt` を参照してください。
+

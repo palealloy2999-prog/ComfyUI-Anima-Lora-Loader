@@ -52,3 +52,8 @@ cd custum_nodes
 git clone https://github.com/palealloy2999-prog/ComfyUI-Anima-Lora-Loader
 ```
 
+## Sources and references
+
+- [ComfyUI-Lora-Manager](https://github.com/willmiao/ComfyUI-Lora-Manager): reference for the LoRA list, search widget, and metadata lookup
+- [ComfyUI-Anima-Remap](https://github.com/shin131002/ComfyUI-Anima-Remap): reference for the block remapping manifests
+- See `mapping/UPSTREAM-LICENSE.txt` for mapping details and license information.
