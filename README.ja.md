@@ -1,5 +1,7 @@
 # ANIMA LoRA Loader
 
+[English README](README.md)
+
 ComfyUIと[ComfyUI-Lora-Manager](https://github.com/willmiao/ComfyUI-Lora-Manager)が必要です。
 このフォルダを `ComfyUI/custom_nodes` に置き、ComfyUIを再起動してブラウザを再読込します。
 
@@ -11,7 +13,10 @@ ComfyUIと[ComfyUI-Lora-Manager](https://github.com/willmiao/ComfyUI-Lora-Manage
 LoRAごとに28/40/52ブロックを判定し、28→40・28→52・40→52をメモリ内で変換します。
 下位世代への適用は停止します。変換済みLoRAファイルは作りません。
 処理結果は `remap_info`、適用したタグは `loaded_loras` に出力します。
-`trigger_words` は初期版では空文字です。CLIP未接続時のCLIP出力はNoneです。
+`trigger_words` には、一覧で有効になっている各LoRAについて、LoRA Managerのメタデータから
+取得したトリガーワードを一覧順に出力します。複数のトリガーワードは `,, ` で連結されます。
+メタデータがない場合や取得に失敗した場合はそのLoRAを無視して処理を続けます。
+CLIP未接続時のCLIP出力はNoneです。
 
 **Copy To New Blocks** は追加ブロックへのコピー、**Blend Neighbor Blocks** は
 前後の元ブロックの対応テンソルの平均です。両方とも実験機能です。
@@ -29,7 +34,7 @@ BlendはLoRA因子の平均であり、合成された差分の平均ではあ�
 検証内容と制限は `VERIFICATION.md`、実装・出典の詳細は `README.md` を参照してください。
 
 
-# install
+## install
 
 ```
 cd custum_nodes

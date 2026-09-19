@@ -1,5 +1,7 @@
 # ANIMA LoRA Loader
 
+[日本語版 README](README.ja.md)
+
 Requires ComfyUI and [ComfyUI-Lora-Manager](https://github.com/willmiao/ComfyUI-Lora-Manager).
 Place this folder in `ComfyUI/custom_nodes`, restart ComfyUI, and reload the browser.
 Add **ANIMA LoRA Loader** from `loaders/anima`, connect MODEL and optionally CLIP,
@@ -17,11 +19,14 @@ neighboring original blocks' corresponding tensors (one available tensor: 100%).
 Blend averages the LoRA factors themselves, **not** the composed LoRA delta;
 copy/blend are experimental, and incompatible neighbor shapes stop with an error.
 
-Outputs: MODEL, CLIP (None when disconnected), trigger_words (currently empty),
-loaded_loras, remap_info. Unknown LoRA counts warn and apply as-is; unknown MODEL
-counts stop. Detection uses the largest stored block index plus one. Sparse LoRAs
-can therefore be misidentified, including a known but incorrect generation; v1
-has no manual override. Duplicate basenames require folder-qualified names.
+Outputs: MODEL, CLIP (None when disconnected), trigger_words, loaded_loras, and
+remap_info. `trigger_words` reads the trigger-word metadata from LoRA Manager for
+each active LoRA, preserving list order, and joins the words with `,, `. Missing
+metadata or a metadata lookup failure is ignored so loading continues. Unknown
+LoRA counts warn and apply as-is; unknown MODEL counts stop. Detection uses the
+largest stored block index plus one. Sparse LoRAs can therefore be misidentified,
+including a known but incorrect generation; v1 has no manual override. Duplicate
+basenames require folder-qualified names.
 
 ## Compatibility and mapping provenance
 
@@ -40,7 +45,7 @@ Their provenance fields are retained. Manager inspected at
 the small bridge. Manager's hard-coded external "send to loader" integration
 does not recognize this node; use its search widget to add LoRAs.
 
-# install
+## install
 
 ```
 cd custum_nodes
