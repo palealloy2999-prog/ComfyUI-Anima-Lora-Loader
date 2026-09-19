@@ -18,6 +18,10 @@ LoRAごとに28/40/52ブロックを判定し、28→40・28→52・40→52を�
 メタデータがない場合や取得に失敗した場合はそのLoRAを無視して処理を続けます。
 CLIP未接続時のCLIP出力はNoneです。
 
+<img width="957" height="779" alt="image" src="https://github.com/user-attachments/assets/c199ed82-ba87-4600-93f0-4258e64cbea3" />
+
+
+
 **Copy To New Blocks** は追加ブロックへのコピー、**Blend Neighbor Blocks** は
 前後の元ブロックの対応テンソルの平均です。両方とも実験機能です。
 BlendはLoRA因子の平均であり、合成された差分の平均ではありません。
