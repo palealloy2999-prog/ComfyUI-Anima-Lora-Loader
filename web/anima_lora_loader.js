@@ -4,6 +4,7 @@ import { connectWidgets, preserveZeroClip } from "./bridge.js";
 
 const TYPE = "AnimaLoraLoader";
 const WIDGET = "ANIMA_MANAGER_LORAS";
+let synchronization
 
 app.registerExtension({
     name: "AnimaLoraLoader.ManagerBridge",
@@ -16,6 +17,11 @@ app.registerExtension({
             const path = extensions.find((url) => /\/[^/]*lora.manager[^/]*\/.*loras_widget\.js$/i.test(url));
             if (!path) throw new Error("ComfyUI-Lora-Manager's loras_widget.js was not found.");
             ({ addLorasWidget: factory } = await import(path));
+            const [{ mergeLoras }, { applyLoraValuesToText }] = await Promise.all([
+              import(path.replace(/loras_widget\.js$/i, 'utils.js')),
+              import(path.replace(/loras_widget\.js$/i, 'lora_syntax_utils.js')),
+            ])
+            synchronization = { mergeLoras, applyLoraValuesToText }
         } catch (error) {
             console.error("[ANIMA LoRA] Install/enable ComfyUI-Lora-Manager and reload.", error);
         }
@@ -37,9 +43,9 @@ app.registerExtension({
         nodeData.input.required.loras[0] = WIDGET;
     },
     nodeCreated(node) {
-        if (node.comfyClass === TYPE) connectWidgets(node);
+        if (node.comfyClass === TYPE) connectWidgets(node, synchronization)
     },
     loadedGraphNode(node) {
-        if (node.comfyClass === TYPE) connectWidgets(node);
+        if (node.comfyClass === TYPE) connectWidgets(node, synchronization)
     },
 });
